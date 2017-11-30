@@ -1,7 +1,7 @@
 console.log('ready');
 
 var days_of_the_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-console.log(days_of_the_week);
+//console.log(days_of_the_week);
 
 var tempDay = days_of_the_week.pop();
 console.log(days_of_the_week);
@@ -18,5 +18,5 @@ console.log(week);
 var weekDays2 = week.pop();
 console.log(week);
 
-var alphaDays = week.sort();
+var alphaDays = week[0].sort();
 console.log(alphaDays);
