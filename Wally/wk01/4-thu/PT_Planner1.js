@@ -38,11 +38,11 @@ console.log('PT Planner Ready');
 
 // sub raillines originating from richmond (index 0 is next station to richmond)
 
-var alemeinOuter = ['East Richmond', 'Burnley', 'Hawthorn', 'Glenferrie', 'Alemein'];
+var alemeinOuter = ['Alemein', 'Glenferrie', 'Hawthorn', 'Burnley', 'East Richmond'];
 var alemeinInner = ['Flinders Street'];
-var glenWaverlyOuter = ['Kooyong', 'Tooronga', 'Glen Waverly'];
-var glenWaverlyInner = ['Parliament', 'Melbourne Central', 'Flagstaff'];
-var sandringhamOuter = ['South Yarra', 'Prahran', 'Windsor', 'Sandringham'];
+var glenWaverlyOuter = ['Glen Waverly', 'Tooronga', 'Kooyong'];
+var glenWaverlyInner = ['Flagstaff', 'Melbourne Central', 'Parliament'];
+var sandringhamOuter = ['Sandrigham', 'Windsor', 'Prahran', 'South Yarra'];
 var sandringhamInner = ['Southern Cross'];
 var richmond = ['Richmond'];
 
@@ -56,22 +56,20 @@ var oneRaiLine = [];
 var subRailLines = [alemeinInner, alemeinOuter, glenWaverlyInner, glenWaverlyOuter, sandringhamInner, sandringhamOuter];
 
 var railLinesTravelled = [];
+var oneLineTest = 0;
 
 //var origin = 'Flinders Street';
 //var origin = 'Burnley';
-//var origin = 'East Richmond';
+var origin = 'East Richmond';
 //var origin = 'Glenferrie';
-
 
 //var origin = 'Melbourne Central';
 //var origin = 'Tooronga';
 
-var origin = 'Southern Cross';
+//var origin = 'Southern Cross';
 //var origin = 'Windsor';
 
 //var origin = 'Richmond';
-
-
 
 //var destination = 'Flinders Street';
 //var destination = 'Glenferrie';
@@ -79,12 +77,12 @@ var origin = 'Southern Cross';
 //var destination = 'Flagstaff';
 //var destination = 'Kooyong';
 
-//var destination = 'Southern Cross';
-var destination = 'Windsor';
+var destination = 'Southern Cross';
+//var destination = 'Windsor';
 
 //var destination = 'Richmond';
 
-//If origin  = destination = richmond
+// When origin is same as destination
 console.log('');
 console.log(alemein);
 console.log(glenWaverly);
@@ -100,80 +98,61 @@ if( origin == destination) {
   alert('Get off train !!');
 }
 
-// if origin and destination on same line
+//truncate total lines to give actual journey
+function actualJourney(railLinesTravelled) {
 
-for(var x = 0; x < railLines.length; x++) {
-      railLinesTravelled = railLines[x];
-          if ((railLinesTravelled.indexOf(origin) >= 0) && (railLinesTravelled.indexOf(destination) >= 0)) {
-          railLinesTravelled.slice(0, railLinesTravelled.length);
-          x = railLines.length;
-          }
-
-}
-
-
-//which arrays?
-
-
-
-
-
-// Reverse railway line array order as required, depeding on if origin or destination
-
-/*  for(var x = 0; x < subRailLines.length; x++) {
-    if ((subRailLines[x].indexOf(origin) >= 0) || (subRailLines[x].indexOf(destination) >= 0)){
-      railLinesTravelled.push(subRailLines[x]);
-        //if(railLinesTravelled[x - 1] == railLinesTravelled[x]) {
-        //railLinesTravelled.pop();
-        console.log('lines trvelled ' + railLinesTravelled);
-        //}
-    }
-  }
-
-  for(var y = 1; y < railLinesTravelled.lenghth; y++) {
-      if( railLinesTravelled[y -1] === railLinesTravelled[y]) {
-        railLinesTravelled.splice( y, 1 );
+  var startJourney = railLinesTravelled.indexOf(origin);
+  var endJourney = railLinesTravelled.indexOf(destination);
+  var n = Math.abs(startJourney - endJourney);
+    var journey = [];
+    if(startJourney > endJourney){
+      for (var i = startJourney; i >= endJourney; i--){
+        journey.push(railLinesTravelled[i]);
       }
-  }
-    console.log('rail lines travelled ' + railLinesTravelled);*/
-
-
-  //if ((alemein.indexOf(origin) >= 0) || (alemein.indexOf(destination) >= 0)){
-  //subRailLines.push(alemein);
-  //}
-  //if ((glenWaverly.indexOf(origin) >= 0) || (glenWaverly.indexOf(destination) >= 0)){
-  //subRailLines.push(glenWaverly);
-  //}
-  //if ((sandringham.indexOf(origin) >= 0) || (sandringham.indexOf(destination) >= 0)){
-  //subRailLines.push(sandringham);
-  //}
-  //console.log(subRailLines);
-  //if(subRailLines.length > 1){
-  //console.log('number of lines travelled ' + subRailLines.length);
-  //}
-
-
-//search array, find match for origin, find match for destination
-console.log(' ######   ');
-console.log(railLinesTravelled);
-var startJourney = railLinesTravelled.indexOf(origin);
-console.log(startJourney + '  ' + railLinesTravelled);
-var endJourney = railLinesTravelled.indexOf(destination);
-var n = Math.abs(startJourney - endJourney);
-console.log(n);
-console.log(startJourney + ', ' + endJourney);
-var journey = [];
-  if(startJourney > endJourney){
-    for (var i = startJourney; i >= endJourney; i--){
-      journey.push(railLinesTravelled[i]);
     }
-  }
-  if(startJourney < endJourney){
-    for (var i = startJourney; i <= endJourney; i++){
-      journey.push(railLinesTravelled[i]);
+    if(startJourney < endJourney){
+      for (var j = startJourney; j <= endJourney; j++){
+        journey.push(railLinesTravelled[j]);
+      }
     }
-  }
-    console.log(journey);
 
   var joinJouney = journey.join( '  --->  ');
   console.log(joinJouney);
+  return joinJouney;
+}
+
+// if origin and destination on same line
+
+for(var x = 0; x < railLines.length; x++) {
+        if ((railLines[x].indexOf(origin) >= 0) && (railLines[x].indexOf(destination) >= 0)) {
+          railLinesTravelled = railLines[x];
+          oneLineTest = 1;
+        }
+}
+
+actualJourney(railLinesTravelled);
+
+// if not on same line which arrays?
+
+if(oneLineTest === 0){
+var m = 0;
+for(var x = 0; x < subRailLines.length; x++) {
+      railLinesTravelled = subRailLines[x];
+          if (subRailLines[x].indexOf(origin) >= 0) {
+            railLinesTravelled.slice(0, subRailLines[x].length);
+          m = subRailLines[x].length;
+                x = subRailLines.length;
+          }
+}
+railLinesTravelled = railLinesTravelled.concat(richmond);
+
+for(var x = 0; x < subRailLines.length; x++) {
+          if (subRailLines[x].indexOf(destination) >= 0) {
+              railLinesTravelled = railLinesTravelled.concat(subRailLines[x].reverse());
+              var w = subRailLines[x].length;
+          x = subRailLines.length;
+          }
+        }
+
+actualJourney(railLinesTravelled);
+}
