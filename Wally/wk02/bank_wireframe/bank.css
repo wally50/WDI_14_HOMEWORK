@@ -2,95 +2,195 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #42413d;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
 body {
+  background-color: #b4b4b4;
   height: 80%;
-  width: 75%;
-  margin: 0 auto;
+  width: 90%;
+  margin-top: 40px;
+}
+
+.head1 {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content:  space-around;
 }
 
 .logo {
-  display: inline-block;
-  height: 80px;
-  width:300px;
-  background-color: red;
-  border: solid 2px black;
+  height: 250px;
+  width: auto;
+  /*background-color: red;
+  border: solid 2px #42413d;
   text-align: center;
-  vertical-align: top;
-  margin-top: 50px;
-}
-
-.logo h3 {
-  margin: 25px auto;
+  padding-top: 10px;*/
 }
 
 .olBank {
-  display: inline-block;
+  color: #b2afac;
+  margin-top: 80px;
+  background-color: #42413d;
   height: 80px;
   width: 300px;
+  border: solid 2px #42423d;
   text-align: center;
-  vertical-align: top;
-  padding-top: 50px;
+}
+.olbank h1 {
+  font-size: 150%;
 }
 
+.blank {
+  height: 80px;
+  width: 300Px;
+}
+
+bankingterminal {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+}
 .savings {
   height: 300px;
   width: 300px;
-  margin: 100px 0 0 0;
-  border: solid 2px black;
-  background-color: pink;
+  margin: 50px 0 40px 0;
+  border: solid 2px #42423d;
+  background-color: #ffce2b;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+.cheque {
+  height: 300px;
+  width: 300px;
+  margin: 50px 0 40px 0;
+  border: solid 2px #42423d;
+  background-color: #607625;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+savingsterminal {
+  margin-left: 20%;
+}
+
+chequeterminal {
+  margin-right: 20%;
+}
+
 .savings div {
-  margin: 0 auto;
+  margin: 10px auto;
+}
+.cheque div {
+  margin: 10px auto;
 }
 
 .savings div h2 {
-  margin: 15px 0;
+  margin: 0px 0;
+}
+.cheque div h2 {
+  margin: 0px 0;
 }
 
 .savings div h3 {
-  margin: 5px 0;
+  margin: 0px 0;
+}
+.cheque div h3 {
+  margin: 0px 0;
 }
 
 .savings div h5 {
   margin: 0;
 }
+.cheque div h5 {
+  margin: 0;
+}
 
-.transactionAmount {
-  height: 30px;
-  width: 180px;
-  text-align: center;
+.transactionAmountBox {
+  height: 28px;
+  width: 173px;
+  color: grey;
+  display:flex;
+  align-content: center;
+  justify-content: center;
   background-color: white;
-  padding-top: 6px;
-  border: 1px black solid;
+  border: 1px #42423d solid;
   margin-bottom: 20px;
 }
 
-.wdraw {
-  height: 25px;
+.saveTransAmount {
+  height: 30px;
+  width: 180px;
+  border:
+  padding: 0px;
+  margin: 20px;
+}
+
+.savWithdraw {
+  height: 30px;
   width: 90px;
   text-align: center;
   background-color: red;
   padding-top: 4px;
-  border: 1px solid black;
+  border: 2px solid #42423d;
 }
-.deposit  {
-  height: 25px;
+.chqWithdraw {
+  height: 30px;
+  width: 90px;
+  text-align: center;
+  background-color: red;
+  padding-top: 4px;
+  border: 2px solid #42423d;
+}
+
+.savDeposit  {
+  height: 30px;
   width: 90px;
   text-align: center;
   background-color: green;
   padding-top: 4px;
-  border: 1px solid black;
+  border: 2px solid #42423d;
+}
+.chqDeposit  {
+  height: 30px;
+  width: 90px;
+  text-align: center;
+  background-color: green;
+  padding-top: 4px;
+  border: 2px solid #42423d;
 }
 
-.transButtons {
+.savTransfer  {
   height: 30px;
-  width: 200px;
-  padding-top: 10px;
-  display:flex;
-  align-content: space-around;
+  width: 90px;
+  text-align: center;
+  background-color: #607625;
+  padding-top: 4px;
+  border: 2px solid #42423d;
+}
 
+.chqTransfer  {
+  height: 30px;
+  width: 90px;
+  text-align: center;
+  background-color: #ffce2b;
+  padding-top: 4px;
+  border: 2px solid #42423d;
+}
+
+.transacionButtonsBox {
+  height: 42px;
+  padding-top: 0px;
+  display:flex;
+  align-content: center;
+  justify-content: space-around;
+  margin: 0px 0;
 }

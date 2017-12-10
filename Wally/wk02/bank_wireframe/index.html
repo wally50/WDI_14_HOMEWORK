@@ -5,46 +5,78 @@
     <link rel="stylesheet" href="bank.css">
     <title>Bank_Wireframe</title>
   </head>
-  <body>
 
-    <head>
+  <body>
+    <div class="head1">
       <div class="logo">
-        <h3>LOGO</h3>
+        <!--h3>LOGO</h3-->
+        <img src="banklogo.jpg">
       </div>
-      <div class ="olBank">
+
+      <div class="olBank">
         <h1>ONLINE BANK</h1>
       </div>
-    </head>
-    <savings >
+      <div class="blank">
+        <h1></h1>
+      </div>
+    </div>
+
+    <bankingterminal>
+    <savingsterminal>
       <div class="savings">
         <div>
-          <h2>SAVINGS</h2>
+          <h2>SAVINGS acct.</h2>
         </div>
         <div>
           <h3>YOUR BALANCE IS...</h3>
         </div>
         <div class="balance">
-          <h2>$ 00.00</h2>
+          <h2>$ <span class="savBalValue">0.00</span></h2>
         </div>
-        <div class="transactionAmount">
-          <h5>ENTER AMOUNT HERE</h5>
+        <div class="transactionAmountBox">
+          <input class="savTransAmount" type="text" placeholder="  ENTER AMOUNT HERE">
         </div>
-        <div class="transButtons">
-          <div class="wdraw">
+        <div class="transactionButtonsBox">
+          <button class="savWithdraw">
             <h5>WITHDRAW</h5>
-          </div>
-          <div class="deposit">
+          </button>
+          <button class="savDeposit">
             <h5>DEPOSIT</h5>
-          </div>
+          </button>
+          <button class="savTransfer">
+            <h5>TRANSFER to</h5>
+          </button>
         </div>
       </div>
-  </savings>
-
-
-
-
-
-
+  </savingsterminal>
+  <chequeterminal>
+    <div class="cheque">
+      <div>
+        <h2>CHEQUE acct.</h2>
+      </div>
+      <div>
+        <h3>YOUR BALANCE IS...</h3>
+      </div>
+      <div class="balance">
+        <h2>$ <span class="chqBalValue">0.00</span></h2>
+      </div>
+      <div class="transactionAmountBox">
+        <input class="chqTransAmount" type="text" placeholder="  ENTER AMOUNT HERE">
+      </div>
+      <div class="transactionButtonsBox">
+        <button class="chqWithdraw">
+          <h5>WITHDRAW</h5>
+        </button>
+        <button class="chqDeposit">
+          <h5>DEPOSIT</h5>
+        </button>
+        <button class="chqTransfer">
+          <h5>TRANSFER to</h5>
+        </button>
+      </div>
+    </div>
+</chequeterminal>
+</bankingterminal>
 
      <script src="bank.js"></script>
   </body>
