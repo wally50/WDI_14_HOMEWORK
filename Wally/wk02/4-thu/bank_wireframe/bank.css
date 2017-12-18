@@ -20,16 +20,18 @@ body {
   display: flex;
   flex-direction: row;
   align-content: center;
-  justify-content:  space-around;
+  justify-content:  space-between;
 }
 
 .logo {
+  
   height: 250px;
   width: auto;
   /*background-color: red;
   border: solid 2px #42413d;
   text-align: center;
   padding-top: 10px;*/
+
 }
 
 .olBank {
