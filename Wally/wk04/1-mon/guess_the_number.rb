@@ -21,5 +21,5 @@ guess = gets.chomp.to_i
 while guess != random_number
   puts("Wrong - Guess again.")
   guess = gets.chomp.to_i
-  end
+end
 puts ("Correct - Good guess!")
