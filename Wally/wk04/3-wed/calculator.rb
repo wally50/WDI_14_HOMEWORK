@@ -3,9 +3,23 @@
 require 'pry'
 
 operand = ''
+further_op = "z"
+num3 = "0".to_f
 
 while operand != 'q'
 
+  if further_op == "a"
+    puts 'Do something further with result? y or n'
+    further_op = gets.chomp
+    if further_op == "y"
+      num1 = num3
+    else
+      puts " "
+      puts "Go again."
+      puts " "
+    end
+  end
+  puts " "
   puts 'Which operation?'
   puts ' + - addition.'
   puts ' - - subtraction.'
@@ -15,6 +29,7 @@ while operand != 'q'
   puts ' r - nth root.'
   puts ' ! - factorial'
   puts ' rcp- reciprocal'
+  puts ' dr - degrees to radians'
   puts ' q - quit.'
 
   operand = gets.chomp
@@ -23,17 +38,29 @@ while operand != 'q'
     abort
   end
 
-  if operand == '!'
-    puts 'Enter a number.'
-    num1 = gets.chomp.to_f
-  elsif operand == 'rcp'
-    puts 'Enter a number.'
-    num1 = gets.chomp.to_f
+  if further_op == "y" && (operand == "rcp" || operand == "!" || operand == "dr")
+        num1 = num3
   else
-    puts 'Enter first number.'
-    num1 = gets.chomp.to_f
-    puts 'Enter second number.'
-    num2 = gets.chomp.to_f
+    if further_op == "y"
+          puts 'Enter a number.'
+      num2 = gets.chomp.to_f
+    else
+      if operand == '!'
+        puts 'Enter a number.'
+        num1 = gets.chomp.to_f
+      elsif operand == 'rcp'
+        puts 'Enter a number.'
+        num1 = gets.chomp.to_f
+      elsif operand == 'dr'
+        puts 'Enter a number.'
+        num1 = gets.chomp.to_f
+      else
+        puts 'Enter first number.'
+        num1 = gets.chomp.to_f
+        puts 'Enter second number.'
+        num2 = gets.chomp.to_f
+      end
+    end
   end
 
   def fact(n)
@@ -46,22 +73,34 @@ while operand != 'q'
 
   puts ''
   if operand == '+'
-    puts "#{num1} + #{num2} = #{num1 + num2}"
+    num3 = num1 + num2
+    puts "#{num1} + #{num2} = #{num3}"
   elsif operand == '-'
-    puts "#{num1} - #{num2} = #{num1 - num2}"
+    num3 = num1 - num2
+    puts "#{num1} - #{num2} = #{num3}"
   elsif operand == '*'
-    puts "#{num1} * #{num2} = #{num1 * num2}"
+    num3 = num1 * num2
+    puts "#{num1} * #{num2} = #{num3}"
   elsif operand == '/'
-    puts "#{num1} / #{num2} = #{(num1 / num2).round(1)}"
+    num3 = num1 / num2
+    puts "#{num1} / #{num2} = #{num3}"
   elsif operand == '^'
-    puts "#{num1} ** #{num2} = #{num1 ** num2}"
+    num3 = num1 ** num2
+    puts "#{num1} ** #{num2} = #{num3}"
   elsif operand == 'r'
-    puts "#{num1} ** 1/#{num2} = #{(num1 ** (1/num2)).round(1)}"
+    num3 = (num1 ** (1/num2)).round(1)
+    puts "#{num1} ** 1/#{num2} = #{num3}"
   elsif operand == '!'
-    puts "#{num1}! = #{fact(num1)}"
+    num3 = fact(num1)
+    puts "#{num1}! = #{num3}"
   elsif operand == 'rcp'
-    puts "1/#{num1} = #{(1/num1).round(2)}"
+    num3 = (1/num1).round(2)
+    puts "1/#{num1} = #{num3}"
+  elsif operand == 'dr'
+    num3 = num1*(Math::PI)/180
+    puts "#{num1} deg = #{num3} rad"
   end
+  further_op = "a"
   puts ''
 end
 
