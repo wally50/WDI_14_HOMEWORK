@@ -1,3 +1,6 @@
 cat
 dog
 rabbit
+cow
+monkey
+Pig

@@ -19,6 +19,6 @@ filename = gets.chomp
 filename_array = IO.readlines(filename)
 number_of_lines = filename_array.length.to_s
 puts (number_of_lines + " line(s)")
-result = File.new("data_result.txt", "a")
+result = File.new("data_result.txt", "a")  #creates new file
 result.close
-File.open("data_result.txt", "w+") { |file| file.write(number_of_lines + " line(s)") }
+File.open("data_result.txt", "w+") { |file|  file.write(number_of_lines + " line(s)") } # opens file and writes to the file.
