@@ -14,8 +14,13 @@ body {
 }
 
 .main h1 {
-  color: #ffffff;
-  font-size: 40px;
+  padding-top: 100px;
+  color: #990000;
+  font-size: 50px;
+}
+
+.main form {
+  padding-top: 50px;
 }
 
 .main {
@@ -25,14 +30,23 @@ body {
   justify-content: center;
 }
 
-ul a {
+ul {
   font-size: 20px;
-  padding-top: 5px;
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: mistyrose;
+}
+
+ul a {
+  padding-top: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+ul a:hover {
+  color: red;
 }
 
 nav {
@@ -44,14 +58,14 @@ nav {
 
 }
 
-nav a .nav_button {
+nav .nav_button {
   font-size: 25px;
   color: white;
   padding: 8px 30px 0 30px;
   text-decoration: none;
 }
 
-a.nav_button:hover {
+.nav_button:hover {
   color: red;
 }
 
@@ -91,6 +105,7 @@ a.nav_button:hover {
 
 .poster {
   width: 300px;
+  padding-top: 50px;
 }
 
 div.wrapper {
@@ -106,6 +121,7 @@ div.wrapper {
 }
 
 .wrapper h2 {
+  padding-top: 30px;
   color: white;
 }
 

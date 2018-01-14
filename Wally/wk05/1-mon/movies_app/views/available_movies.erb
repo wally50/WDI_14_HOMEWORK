@@ -2,6 +2,6 @@
 
 <ul>
   <% @search.each do |name| %>
-  <a href="/movie?film=<%= name["Title"] %>"><li><%= name["Title"] %></li></a>
+  <a href="/movie?film=<%= name["imdbID"] %>"><li><%= name["Title"] %> - <%= name["Year"] %></li></a>
   <% end %>
 </ul>

@@ -1,7 +1,7 @@
-
 require 'sinatra'
 require 'sinatra/reloader'
 require 'httparty'
+require 'pg'
 require "pry"
 
 get '/' do
@@ -20,17 +20,40 @@ get '/available_movies' do
 end
 
 get '/movie' do
-  # film = params[:film]
-  # film = name["Title"]
-  result = HTTParty.get("http://omdbapi.com/?apikey=2f6435d9&t=#{params[:film]}")
-  @movieTitle = result.parsed_response["Title"]
-  @moviePlot = result.parsed_response["Plot"]
-  @moviePoster = result.parsed_response["Poster"]
-  @movieTime = result.parsed_response["Runtime"]
-  erb :movie
+# check local PG data base - movies_db
+  nada = true
+  conn = PG.connect(dbname: 'movies_db')
+  sql = "SELECT * FROM movies_local WHERE omdb_id = ('#{params[:film]}');"
+  @movie = conn.exec(sql).first
+  nada = false if @movie.nil?
+  if nada && (@movie["omdb_id"].include? "#{params[:film]}")
+    @moviePoster = "#{@movie["image_url"]}"
+    @movieTitle = "#{@movie["movie_name"]}"
+    @moviePlot = "#{@movie["movie_plot"]}"
+    @movieTime = "#{@movie["movie_length"]}"
+    conn.close
+    erb :movie
+  else
+  # retrieve from omdb if not in local db
+    result = HTTParty.get("http://omdbapi.com/?apikey=2f6435d9&i=#{params[:film]}")
+    @movieTitle = result.parsed_response["Title"]
+    @moviePlot = result.parsed_response["Plot"]
+    @moviePoster = result.parsed_response["Poster"]
+    @movieTime = result.parsed_response["Runtime"]
+    @movieYear = result.parsed_response["Year"]
+  # store in psql database
+    conn = PG.connect(dbname: 'movies_db')
+    sql = "INSERT INTO movies_local (movie_name, omdb_id, movie_year, movie_length, movie_plot, image_url) VALUES ('#{@movieTitle.gsub(/[^a-z0-9\s]/i, '')}', '#{params[:film]}', '#{@movieYear}', '#{@movieTime}', '#{@moviePlot}', '#{@moviePoster}');"
+    conn.exec(sql)
+    conn.close
+    erb :movie
+  end
 end
 
-# Movies I
+# binding.pry
+# puts 'program paused'
+
+##### Movies I #####
 #
 # Specification
 #
@@ -65,7 +88,7 @@ end
 #
 # Specification
 #
-# Instead of returning a single title, the OMDb API allows you t do a search which will return multiple titles.
+# Instead of returning a single title, the OMDb API allows you to do a search which will return multiple titles.
 #
 # For example if you search on Jaws, you will get a list like the following:
 #
@@ -74,7 +97,7 @@ end
 # Jaws 3-D
 # Jaws Special
 # Jaws Wired Shut
-# Update your app to allow users to enter a search for movies, and to show the list as a set of links. Users should then be able to click on the link and go to the movie-etails page (like in your existing app).
+# Update your app to allow users to enter a search for movies, and to show the list as a set of links. Users should then be able to click on the link and go to the movie-details page (like in your existing app).
 #
 # Extra credit:
 #
@@ -86,6 +109,10 @@ end
 #
 # add an extra path '/history' that list out all search history
 
-
-# binding.pry
-puts 'program paused'
+# Movies 3: Return of Son of Movies
+# A more more advanced version of the Movies Sinatra App
+#
+# Summary
+# The people at OMDB have complained that our site is making too many requests for Jaws. Update your movies app to store OMDB data in your own local database.
+#
+# The first time a movie is searched for, your app will put results from OMDB as before. But those results will need to be stored locally so that subsequent requests for the same title can be served from YOUR database, without bothering the OMDB guys again.
