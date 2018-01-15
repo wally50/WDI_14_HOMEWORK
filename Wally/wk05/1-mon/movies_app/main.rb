@@ -43,7 +43,7 @@ get '/movie' do
     @movieYear = result.parsed_response["Year"]
   # store in psql database
     conn = PG.connect(dbname: 'movies_db')
-    sql = "INSERT INTO movies_local (movie_name, omdb_id, movie_year, movie_length, movie_plot, image_url) VALUES ('#{@movieTitle.gsub(/[^a-z0-9\s]/i, '')}', '#{params[:film]}', '#{@movieYear}', '#{@movieTime}', '#{@moviePlot}', '#{@moviePoster}');"
+    sql = "INSERT INTO movies_local (movie_name, omdb_id, movie_year, movie_length, movie_plot, image_url) VALUES ('#{@movieTitle.gsub(/[^a-z0-9\s]/i, '')}', '#{params[:film]}', '#{@movieYear}', '#{@movieTime}', '#{@moviePlot.gsub(/[^a-z0-9\s]/i, '')}', '#{@moviePoster}');"
     conn.exec(sql)
     conn.close
     erb :movie
