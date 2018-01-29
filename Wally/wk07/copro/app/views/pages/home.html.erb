@@ -1,0 +1,18 @@
+<h1>home(pages/home.h.e)</h1>
+
+<form action="/login" method="get">
+  <button name="button">Sign up</button>
+</form>
+
+<a href="/login">Login/</a>
+
+<div class="container">
+  <% @projects.each do |project| %>
+    <div class="project">
+      <a href="/projects/<%= project.id %>">
+        <img src="<%= project.preview.url %>" alt="">
+      </a>
+        <h2><%= project.title %></h2>
+    </div>
+  <% end %>
+</div>

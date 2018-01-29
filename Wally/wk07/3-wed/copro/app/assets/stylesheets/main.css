@@ -1,0 +1,52 @@
+label, input {
+  display:block;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project {
+  width: 50%;
+  /*float:left;*/
+  background-color: mistyrose;
+}
+
+.project h2 {
+  display: none;
+}
+
+.project img {
+  display: block; /* removes the space under image*/
+}
+
+.wrapper {
+  width: 300px;
+  border: 3px solid black;
+  position: relative;
+}
+
+.wrapper span {
+  position: absolute;
+  right:15px;
+  top: 15px;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+@media (min-width: 700px) {
+  .project{
+    width: 25%;
+  }
+
+  .project h2 {
+    display:block;
+  }
+}
+
+@media (min-width: 900px) {
+  .project {
+    width: 25%;
+  }
+}
