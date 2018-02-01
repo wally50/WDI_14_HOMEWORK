@@ -1,0 +1,12 @@
+<h1>Pokemon</h1>
+
+<% @pokemons.each do |pokemon| %>
+  <div class="pokes">
+    <div class="poke_spec">
+      <a href="/pokemons/<%= pokemon.id %>"><%= pokemon.species %></a>
+    </div>
+    <div> <%= pokemon.nickname %></div>
+    <div> <%= pokemon.level %></div>
+  </div>
+  <br>
+  <% end %>

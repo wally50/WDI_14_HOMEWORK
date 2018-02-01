@@ -1,0 +1,16 @@
+body {
+  background-color: mistyrose;
+}
+
+.pokes {
+  display: flex;
+
+}
+.pokes div {
+  width:100px;
+  height: 20px;
+}
+
+.poke_spec a {
+  color: blue;
+}
