@@ -18,9 +18,10 @@ cityDropDown(city, cityAbb);
 
 // element for event listening
 var cityElement = document.querySelector("#city-type");
+
 // function to select city and change body class to render background image of selected city
 var changeBackground = function() {
-// remove any existing body classes to allow for reselection
+// remove any existing body classes to allow for reselection=
   for (i = 0; i < cityAbb.length; i++) {
     cityTemp = cityAbb[i].replace(/[^a-z]+/gi,'');
     document.querySelector("body").classList.remove(cityTemp);
