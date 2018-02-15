@@ -11,7 +11,7 @@ Write a program that, given a number, can find the sum of all the multiples of 3
 Write the program in javascript with nodejs.
 
 $ node sumOfMultiples.js 10
-$ 23
+$ 23                         --should be 33 if 10 included.
 $ node sumOfMultiples.js 5
 $ 8
 Source

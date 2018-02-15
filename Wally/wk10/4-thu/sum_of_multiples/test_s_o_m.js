@@ -6,12 +6,13 @@ var sumOfMultiples = require('./sum_of_multiples.js');
 // as per question, (not the given example 3 + 5 + 6 + 9 = 23)
 // ie.  3 + 5 + 6 + 9 + 10 = 33
 
-console.log('test results below');
+console.log("\x1b[42m",'test results below',"\x1b[0m");
 
 if (sumOfMultiples.sumOfMultiples(9) === 9) {
   console.log("\x1b[32m",'test true: 9 => 23',"\x1b[0m");
 } else {
-  console.log("\x1b[31m",'TEST to see if tests flag invalid expected value, 9 => 9',"\x1b[0m");
+  console.log("\x1b[31m",'test to see if test FAILS with incorrect expected value, 9 => 9',"\x1b[0m");
+  console.log("\x1b[32m",'Fail test TRUE',"\x1b[0m");
 }
 
 if (sumOfMultiples.sumOfMultiples(0) == "enter number which is 3 or more") {
@@ -39,7 +40,7 @@ if (sumOfMultiples.sumOfMultiples(10) === 33){
 }
 
 if (sumOfMultiples.sumOfMultiples(29) !== 225) {
-  console.log("\x1b[32m",'test true: 29 !=> 225',"\x1b[0m");
+  console.log("\x1b[32m",'test true: 29 => !225',"\x1b[0m");
 } else {
   console.log("\x1b[31m",'TEST FAIL: 29',"\x1b[0m");
 }
