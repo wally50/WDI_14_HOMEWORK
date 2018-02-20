@@ -7,13 +7,12 @@ class ATM {
     this.transactionHistory = transactionHistory;
   }
 
-
   transactionHistory() {
     console.log(this.transactionHistory);
     return this.transactionHistory;
   }
 
-  get showBalance() {
+  showBalance() {
     console.log(this.money);
     return this.money;
   }
