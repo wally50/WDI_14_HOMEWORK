@@ -7,34 +7,24 @@ export default class PasswordIP extends React.Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      // value: props.startValue || '',
-      // score: this.props.startCount || 0,
       password: ''
     };
   }
 
-  // onInputChange(event) {
-  //   this.setState({
-  //     value: event.target.value,
-  //     password: event.target.value
-  //   });
-  //   console.log(this.state.value);
-  //   console.log(this.state.value.length+1);
-  // }
+
   handleChange(e) {
-    this.setState({ password: e.target.value })
+    this.setState({ password: e.target.value });
   }
 
   render() {
-    // const {value} = this.state;
-    const password = PsswrdScore(this.state.password);
+    const rating = PsswrdScore(this.state.password);
 
     return (
       <div className="passwordip">
         <input className="passwordip__input"
           onChange={this.handleChange} />
 
-        <span className="passwordip__span"> {password}  </span>
+        <span className="passwordip__span"> {rating}  </span>
       </div>
     )
   }
